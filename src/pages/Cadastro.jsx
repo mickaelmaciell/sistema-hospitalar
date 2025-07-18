@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 
 function Cadastro() {
+  const [tipo, setTipo] = useState("");
   const [nome, setNome] = useState("");
   const [motivo, setMotivo] = useState("");
   const [prioridade, setPrioridade] = useState("");
@@ -12,7 +13,7 @@ function Cadastro() {
     setErro("");
     setSucesso("");
 
-    if (!nome.trim() || !motivo.trim() || !prioridade) {
+    if (!tipo.trim() || !nome.trim() || !motivo.trim() || !prioridade) {
       setErro("⚠️ Preencha todos os campos e escolha a prioridade.");
       return;
     }
@@ -21,21 +22,28 @@ function Cadastro() {
 
     const ficha = {
       id: Date.now(),
-      nome: nome.trim(),
+      nome: tipo.trim(),             // Tipo de atendimento
+      nomeReal: nome.trim(),         // Nome real do paciente
       motivo: motivo.trim(),
-      prioridade: prioridade,
+      cor:
+        prioridade === "vermelho"
+          ? "Vermelho"
+          : prioridade === "amarelo"
+          ? "Amarelo"
+          : "Verde",
       status: "Aguardando",
       horaEntrada: dataEntrada.toISOString(),
     };
 
-    const fila = JSON.parse(localStorage.getItem("fila")) || [];
-    fila.push(ficha);
-    localStorage.setItem("fila", JSON.stringify(fila));
+    const pacientes = JSON.parse(localStorage.getItem("pacientes")) || [];
+    pacientes.push(ficha);
+    localStorage.setItem("pacientes", JSON.stringify(pacientes));
 
+    setTipo("");
     setNome("");
     setMotivo("");
     setPrioridade("");
-    setSucesso(`✅ Paciente "${ficha.nome}" cadastrado com sucesso!`);
+    setSucesso(`✅ Paciente "${ficha.nomeReal}" cadastrado com sucesso!`);
     inputNomeRef.current.focus();
   };
 
@@ -48,6 +56,13 @@ function Cadastro() {
       <h2 className="text-3xl font-bold mb-6">Cadastro de Paciente</h2>
 
       <div className="flex flex-col gap-4 max-w-md">
+        <input
+          className="border p-2 rounded focus:outline-blue-500"
+          placeholder="Tipo de Atendimento (Ex: Consulta, Retorno, etc)"
+          value={tipo}
+          onChange={(e) => setTipo(e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
         <input
           ref={inputNomeRef}
           className="border p-2 rounded focus:outline-blue-500"
@@ -83,14 +98,10 @@ function Cadastro() {
         </button>
 
         {erro && (
-          <div className="bg-red-100 text-red-700 px-4 py-2 rounded">
-            {erro}
-          </div>
+          <div className="bg-red-100 text-red-700 px-4 py-2 rounded">{erro}</div>
         )}
         {sucesso && (
-          <div className="bg-green-100 text-green-700 px-4 py-2 rounded">
-            {sucesso}
-          </div>
+          <div className="bg-green-100 text-green-700 px-4 py-2 rounded">{sucesso}</div>
         )}
       </div>
     </div>

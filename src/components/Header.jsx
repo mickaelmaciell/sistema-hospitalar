@@ -1,3 +1,4 @@
+// src/components/Header.jsx
 import { Link } from "react-router-dom";
 import { Stethoscope, UserPlus, ClipboardList, UserCog, Monitor } from "lucide-react";
 
@@ -34,7 +35,7 @@ function Header() {
           {/* Navegação */}
           <nav className="hidden md:flex gap-2">
             <Link
-              to="/"
+              to="/cadastro"
               className="group flex items-center gap-2 px-5 py-3 rounded-xl hover:bg-gradient-to-r hover:from-white/20 hover:to-white/10 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
               <UserPlus className="w-5 h-5 group-hover:scale-110 transition-transform" />

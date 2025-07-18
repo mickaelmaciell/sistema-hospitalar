@@ -1,42 +1,148 @@
 .container-atendimento {
-  padding: 32px;
+  padding: 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: left;
 }
 
 .titulo-atendimento {
-  font-size: 24px;
+  font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 24px;
+  color: #2563eb;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .card-paciente {
-  background-color: #d1fae5; /* Verde claro */
-  padding: 24px;
-  border-radius: 8px;
-  margin-bottom: 16px;
+  background-color: #f0f9ff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
 }
 
 .card-paciente h3 {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 8px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #1e40af;
 }
 
-.botao-chamar {
-  background-color: #2563eb; /* Azul */
+.card-paciente p {
+  margin: 0.3rem 0;
+  color: #374151;
+}
+
+.bloco {
+  margin-top: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.bloco label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #1e3a8a;
+}
+
+.bloco input,
+.bloco textarea {
+  padding: 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-family: sans-serif;
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: #111827;
+}
+
+.lista-itens {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.item-selecionado {
+  background-color: #2563eb;
   color: white;
-  padding: 8px 16px;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.item-selecionado button {
+  background: transparent;
   border: none;
-  border-radius: 6px;
+  color: white;
   cursor: pointer;
-  margin-top: 16px;
+  font-weight: bold;
+}
+
+/* Updated styles for buttons */
+.botao-chamar,
+.botao-salvar {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+  /* Removed margin-right: 1rem; */
+  font-size: 1rem;
   transition: background-color 0.3s ease;
 }
 
-.botao-chamar:hover {
-  background-color: #1d4ed8; /* Azul mais escuro no hover */
+.botao-chamar:hover,
+.botao-salvar:hover {
+  background-color: #1e40af;
 }
 
 .texto-nenhum {
-  color: #374151; /* Cinza escuro */
-  font-size: 16px;
+  color: #64748b;
+  font-size: 1.125rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.prioridade {
+  padding: 2px 8px;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.prioridade-verde {
+  background-color: #22c55e;
+}
+
+.prioridade-amarelo {
+  background-color: #facc15;
+  color: #1f2937;
+}
+
+.prioridade-vermelho {
+  background-color: #ef4444;
+}
+
+.botao-limpar {
+  background-color: transparent;
+  border: none;
+  color: #2563eb;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+  text-decoration: underline;
+  align-self: flex-start;
+}
+
+/* New style to center buttons */
+.botoes-container {
+  text-align: center;
+  margin-top: 1.5rem; /* Add some top margin for spacing */
 }
